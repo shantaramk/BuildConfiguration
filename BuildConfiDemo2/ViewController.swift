@@ -7,12 +7,26 @@
 //
 
 import UIKit
+var baseURL = ""
+var googley = ""
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        #if DemoDebug
+        baseURL = "DemoDebug"
+        #elseif DemoRelease
+        baseURL = "DemoRelease"
+        #elseif DevelopmentDebug
+        baseURL = "DevelopmentDebug"
+        #elseif DevelopmentRelease
+        baseURL = "DevelopmentRelase"
+        #endif
+        
+        let bundleID = Bundle.main.bundleIdentifier
+        print(bundleID ?? "")
     }
 
     override func didReceiveMemoryWarning() {
